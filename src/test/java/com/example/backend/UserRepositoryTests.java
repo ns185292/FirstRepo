@@ -1,6 +1,8 @@
 package com.example.backend;
 import static org.assertj.core.api.Assertions.assertThat;
- 
+
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -30,8 +32,11 @@ public void testCreateUser() {
     user.setEmail("ravikumar@gmail.com");
     user.setPassword("ravi2020");
     user.setGovtid("123456789012");
-    user.setLastName("Kumar");
-     
+    user.setName("Kumar");
+    user.setDob(LocalDate.from(LocalDate.now()));
+    user.setAddress("A-123, Rosebury Park, Fatima Nagar.");
+    user.setPhno("9876543216");
+
     User savedUser = repo.save(user);
      
     User existUser = entityManager.find(User.class, savedUser.getId());
